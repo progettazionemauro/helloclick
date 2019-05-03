@@ -38,7 +38,7 @@
       
       <form>
         <input name="dream" type="text" maxlength="100" placeholder="Dreams!" aria-labelledby="submit-dream">
-        <button type="submit" id="submit-dream">Submit Dream</button>
+              <button type="submit" id="submit-dream" onclick="myFunction()">Apri molti documenti</button>
       </form>
       
       <section class="dreams">
@@ -53,7 +53,11 @@
     <!-- include the Glitch button to show what the webpage is about and
           to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
-    <script src="https://button.glitch.me/button.js"></script>
+    <script>
+      function myFunction() {
+                            window.open("https://www.calcolatriceonline.it")
+      }
+      </script>
 
   </body>
 </html>
