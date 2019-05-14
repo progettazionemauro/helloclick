@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <title>Webpage Title</title>
+      <script src="pathToJSScriptShownBeneath"></script>
+    </head>
+    <body>
+            <button onclick="funAddFav('http://youtube.com')">
+                Add to favorite
+             </button>
+             <div id="result"></div>
+
+<script>var blLocalStorage = false;
+
+function funInitiate(){
+  if (typeof(Storage) !== "undefined") {
+    console.log("localstorage detected on this browser");
+    blLocalStorage = true;
+  }else{
+    console.log("local storage is not supported by this browser, please update");
+  }
+}
+
+function funTestLocalStorage(){
+  var strLocalStorage = localStorage.getItem("FavSongs");
+  if(strLocalStorage === null){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function funGetSongFavorites(){
+  if(blLocalStorage){
+    if (funTestLocalStorage()){
+      var arrLocalStorage = JSON.parse(localStorage.getItem("FavSongs"));
+      var elOutput = document.querySelector("#result");
+      for(i = 0; i < arrLocalStorage.length; i++){
+        elOutput.innerHTML += "<br>" + arrLocalStorage[i]
+      }
+    }
+  }else{
+    console.log("No local storage - function funGetSongFavourites aborted");
+  }
+}
+
+function funAddFav(strURL){
+  if(blLocalStorage){
+    var strLocalStorage = localStorage.getItem(strURL);
+    if(strLocalStorage === null){
+      localStorage.setItem("FavSongs", strURL);
+    }else{
+      var arrList = JSON.parse(localStorage.getItem('FavSongs'));
+      arrList.push(strURL);
+    }
+    localStorage.setItem('FavSong', JSON.stringify(arrList));
+    console.log("Favourite Lists update: " + strURL);
+  }else{
+    console.log("No local storage - Function funAddFav aborted");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", funInitiate, false);
+        
+        var blLocalStorage = false;
+
+function funInitiate(){
+  if (typeof(Storage) !== "undefined") {
+    console.log("localstorage detected on this browser");
+    blLocalStorage = true;
+  }else{
+    console.log("local storage is not supported by this browser, please update");
+  }
+}
+
+function funTestLocalStorage(){
+  var strLocalStorage = localStorage.getItem("FavSongs");
+  if(strLocalStorage === null){
+    return false;
+  }else{
+    return true;
+  }
+}
+
+function funGetSongFavorites(){
+  if(blLocalStorage){
+    if (funTestLocalStorage()){
+      var arrLocalStorage = JSON.parse(localStorage.getItem("FavSongs"));
+      var elOutput = document.querySelector("#result");
+      for(i = 0; i < arrLocalStorage.length; i++){
+        elOutput.innerHTML += "<br>" + arrLocalStorage[i]
+      }
+    }
+  }else{
+    console.log("No local storage - function funGetSongFavourites aborted");
+  }
+}
+
+function funAddFav(strURL){
+  if(blLocalStorage){
+    var strLocalStorage = localStorage.getItem(strURL);
+    if(strLocalStorage === null){
+      localStorage.setItem("FavSongs", strURL);
+    }else{
+      var arrList = JSON.parse(localStorage.getItem('FavSongs'));
+      arrList.push(strURL);
+    }
+    localStorage.setItem('FavSong', JSON.stringify(arrList));
+    console.log("Favourite Lists update: " + strURL);
+  }else{
+    console.log("No local storage - Function funAddFav aborted");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", funInitiate, false);
+        </script>
+    </body>
+</html>
